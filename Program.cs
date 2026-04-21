@@ -3,13 +3,15 @@ using PortafolioApi.Data;
 using PortafolioApi.Repositories;
 using PortafolioApi.Services;
 
-
 var builder = WebApplication.CreateBuilder(args);
 
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+var connectionString =
+    builder.Configuration["DATABASE_URL"]
+    ?? builder.Configuration.GetConnectionString("DefaultConnection")
+    ?? throw new InvalidOperationException("No se encontró la cadena de conexión.");
 
 builder.Services.AddDbContext<PortafolioDbContext>(options =>
-    options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
+    options.UseNpgsql(connectionString));
 
 builder.Services.AddScoped<IDatosPersonalesRepository, DatosPersonalesRepository>();
 builder.Services.AddScoped<IDatosPersonalesService, DatosPersonalesService>();
@@ -40,17 +42,15 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
-
- app.UseSwagger();
- app.UseSwaggerUI();
-
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.UseCors("AllowAll");
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
+
 var port = Environment.GetEnvironmentVariable("PORT") ?? "10000";
 app.Urls.Add($"http://0.0.0.0:{port}");
-
 
 app.Run();
