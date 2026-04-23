@@ -107,3 +107,4 @@ C:\xampp82\htdocs\miportafolio\miportafolio\obj\Debug\net8.0\refint\miportafolio
 C:\xampp82\htdocs\miportafolio\miportafolio\obj\Debug\net8.0\miportafolio.pdb
 C:\xampp82\htdocs\miportafolio\miportafolio\obj\Debug\net8.0\miportafolio.genruntimeconfig.cache
 C:\xampp82\htdocs\miportafolio\miportafolio\obj\Debug\net8.0\ref\miportafolio.dll
+C:\xampp82\htdocs\miportafolio\miportafolio\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
