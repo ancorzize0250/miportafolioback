@@ -25,6 +25,8 @@ builder.Services.AddScoped<IRedSocialRepository, RedSocialRepository>();
 builder.Services.AddScoped<IRedSocialService, RedSocialService>();
 builder.Services.AddScoped<IFotoRepository, FotoRepository>();
 builder.Services.AddScoped<IFotoService, FotoService>();
+builder.Services.AddScoped<IHojaVidaService, HojaVidaService>();
+builder.Services.AddScoped<IPdfService, PdfService>();
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
