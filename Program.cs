@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using PortafolioApi.Data;
 using PortafolioApi.Repositories;
 using PortafolioApi.Services;
+using QuestPDF.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -42,13 +43,15 @@ builder.Services.AddCors(options =>
     });
 });
 
+QuestPDF.Settings.License = LicenseType.Community;
+
 var app = builder.Build();
 
 app.UseSwagger();
 app.UseSwaggerUI();
 
 app.UseCors("AllowAll");
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
 
